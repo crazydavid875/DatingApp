@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.quintus.labs.datingapp.Main.MainActivity;
 import com.quintus.labs.datingapp.Matched.Matched_Activity;
+import com.quintus.labs.datingapp.MusicList;
 import com.quintus.labs.datingapp.Profile.Profile_Activity;
 import com.quintus.labs.datingapp.R;
 
@@ -45,8 +46,8 @@ public class TopNavigationViewHelper {
                         context.startActivity(intent1);
                         break;
 
-                    case R.id.ic_matched:
-                        Intent intent3 = new Intent(context, Matched_Activity.class);
+                    case R.id.ic_musiclist:
+                        Intent intent3 = new Intent(context, MusicList.class);
                         context.startActivity(intent3);
 
                         break;
