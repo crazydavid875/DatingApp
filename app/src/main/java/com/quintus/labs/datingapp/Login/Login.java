@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.quintus.labs.datingapp.Main.MainActivity;
+import com.quintus.labs.datingapp.Main.MusicPlayer;
 import com.quintus.labs.datingapp.R;
 
 
@@ -32,6 +33,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Intent intent = new Intent(this, MusicPlayer.class );
+        startActivity(intent);
         mEmail = findViewById(R.id.input_email);
         mPassword = findViewById(R.id.input_password);
         mContext = Login.this;
