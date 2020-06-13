@@ -1,4 +1,4 @@
-package com.quintus.labs.datingapp;
+package com.quintus.labs.datingapp.Listed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.quintus.labs.datingapp.Matched.Matched_Activity;
+import com.quintus.labs.datingapp.R;
 import com.quintus.labs.datingapp.Utils.TopNavigationViewHelper;
 
 public class MusicList extends AppCompatActivity {
