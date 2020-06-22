@@ -34,4 +34,9 @@
         <item>@drawable/img3</item>
         <item>@drawable/img4</item>
     </integer-array>
+    <!-- Ex name-->
+    <string name="song_ex2">摔倒分手</string>
+    <string name="art_ex">謝帥帥</string>
+
+
 </resources>
