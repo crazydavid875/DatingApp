@@ -34,8 +34,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = new Intent(this, MusicPlayer.class );
-        startActivity(intent);
+        //Intent intent = new Intent(this, MusicPlayer.class );
+        //startActivity(intent);
         mEmail = findViewById(R.id.input_email);
         mPassword = findViewById(R.id.input_password);
         mContext = Login.this;

@@ -26,6 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Main.MusicPlayer"></activity>
+
+        <activity android:name=".Listed.MusicList"></activity>
         <activity android:name=".Introduction.IntroductionMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

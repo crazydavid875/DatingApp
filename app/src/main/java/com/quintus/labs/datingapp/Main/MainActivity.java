@@ -213,7 +213,6 @@ public class MainActivity extends Activity {
 
             rowItems.remove(0);
             arrayAdapter.notifyDataSetChanged();
-
             Intent btnClick = new Intent(mContext, BtnLikeActivity.class);
             btnClick.putExtra("url", card_item.getProfileImageUrl());
             startActivity(btnClick);
