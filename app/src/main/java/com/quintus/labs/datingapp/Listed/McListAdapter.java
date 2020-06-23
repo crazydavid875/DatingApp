@@ -135,6 +135,7 @@ public class McListAdapter extends RecyclerView.Adapter<McListAdapter.MyViewHold
             bundle.putInt("id", song.id);
             Log.d("Touch id","id is : "+Integer.toString(song.id));
             Intent intent = new Intent(mContext,MusicPlayer.class);
+            intent.putExtras(bundle);
             mContext.startActivity(intent);
             //NavigationUtils.navigateToPlaylistDetail(mContext, getPlaylistType(getAdapterPosition()), (long) albumArt.getTag(), String.valueOf(title.getText()), foregroundColor, arraylist.get(getAdapterPosition()).id, null);
 

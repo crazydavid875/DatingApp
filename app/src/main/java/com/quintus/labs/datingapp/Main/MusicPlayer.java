@@ -73,6 +73,8 @@ public class MusicPlayer extends AppCompatActivity {
         songProcess=(SeekBar)findViewById(R.id.player_seekbar);
         songProcess.setClickable(true);
         songPath="";
+        Intent intent=getIntent();
+        songNum=intent.getExtras().getInt("id");
         checkUserPermission();//確認授權
 
         try {
@@ -80,6 +82,7 @@ public class MusicPlayer extends AppCompatActivity {
             mPlayer.setDataSource(_songs.get(songNum).getSongUrl());
             mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mPlayer.prepareAsync();
+            PlayMusic();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,63 +91,9 @@ public class MusicPlayer extends AppCompatActivity {
         playbtn.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                PlayMusic();
                 //Play music State
-                if(playing == SongState.PAUSE&&pause_state==false){
-                    Log.d("test","ToPauseState");
-                    Toast.makeText(MusicPlayer.this, "Playing Audio", Toast.LENGTH_SHORT).show();
-                    playing=SongState.PLAYING;//設定狀態為play
-                    playbtn.setImageDrawable(getDrawable(R.drawable.pause));
-                    try {
-                        mPlayer.reset();
-                        mPlayer.setDataSource(_songs.get(songNum).getSongUrl());
-                        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                        mPlayer.prepareAsync();
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            // 装载完毕回调
-                            songProcess.setMax(eTime);
-                            mPlayer.start();
-
-                        }
-                    });
-                    Log.d("NAME",_songs.get(songNum).getSongname());
-
-                    hdlr.postDelayed(UpdateSongTime, 100);
-                }
-                //繼續撥方
-                else if(playing == SongState.PAUSE&&pause_state==true){
-                    Toast.makeText(MusicPlayer.this, "Playing Audio", Toast.LENGTH_SHORT).show();
-                    playing=SongState.PLAYING;//設定狀態為play
-                    playbtn.setImageDrawable(getDrawable(R.drawable.pause));
-                    mPlayer.start();
-                    pause_state=false;
-                    Log.d("NAME",_songs.get(songNum).getSongname());
-                    songProcess.setProgress(nowTime);
-                    hdlr.postDelayed(UpdateSongTime, 100);
-
-                }
-                //pause music State
-                else {
-                    Log.d("test","ToPlayState");
-                    Toast.makeText(MusicPlayer.this, "Pausing Audio", Toast.LENGTH_SHORT).show();
-                    playing=SongState.PAUSE;
-                    mPlayer.pause();
-                    pause_state=true;
-                    playbtn.setImageDrawable(getDrawable(R.drawable.play));
-                }
-                if(oTime == 0){
-                    songProcess.setMax(eTime);
-                    oTime =1;
-                }
-
-                startTime.setText(String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(nowTime),
-                        TimeUnit.MILLISECONDS.toSeconds(nowTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(nowTime))) );
             }
         });
 
@@ -220,18 +169,76 @@ public class MusicPlayer extends AppCompatActivity {
         }
         loadSongs();
     }
+    private void PlayMusic(){
+        if(playing == SongState.PAUSE&&pause_state==false){
+            Log.d("test","ToPauseState");
+            Toast.makeText(MusicPlayer.this, "Playing Audio", Toast.LENGTH_SHORT).show();
+            playing=SongState.PLAYING;//設定狀態為play
+            playbtn.setImageDrawable(getDrawable(R.drawable.pause));
+            try {
+                mPlayer.reset();
+                mPlayer.setDataSource(_songs.get(songNum).getSongUrl());
+                mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mPlayer.prepareAsync();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    // 装载完毕回调
+                    songProcess.setMax(eTime);
+                    mPlayer.start();
+
+                }
+            });
+            Log.d("NAME",_songs.get(songNum).getSongname());
+
+            hdlr.postDelayed(UpdateSongTime, 100);
+        }
+        //繼續撥方
+        else if(playing == SongState.PAUSE&&pause_state==true){
+            Toast.makeText(MusicPlayer.this, "Playing Audio", Toast.LENGTH_SHORT).show();
+            playing=SongState.PLAYING;//設定狀態為play
+            playbtn.setImageDrawable(getDrawable(R.drawable.pause));
+            mPlayer.start();
+            pause_state=false;
+            Log.d("NAME",_songs.get(songNum).getSongname());
+            songProcess.setProgress(nowTime);
+            hdlr.postDelayed(UpdateSongTime, 100);
+
+        }
+        //pause music State
+        else {
+            Log.d("test","ToPlayState");
+            Toast.makeText(MusicPlayer.this, "Pausing Audio", Toast.LENGTH_SHORT).show();
+            playing=SongState.PAUSE;
+            mPlayer.pause();
+            pause_state=true;
+            playbtn.setImageDrawable(getDrawable(R.drawable.play));
+        }
+        if(oTime == 0){
+            songProcess.setMax(eTime);
+            oTime =1;
+        }
+
+        startTime.setText(String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(nowTime),
+                TimeUnit.MILLISECONDS.toSeconds(nowTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(nowTime))) );
+    }
     private Runnable UpdateSongTime = new Runnable() {
         @SuppressLint("DefaultLocale")
         @Override
         public void run() {
-            songName.setText(_songs.get(songNum).getSongname());
+            eTime = mPlayer.getDuration();
             nowTime = mPlayer.getCurrentPosition();
+            songName.setText(_songs.get(songNum).getSongname());
+            songTime.setText(String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(eTime),
+                    TimeUnit.MILLISECONDS.toSeconds(eTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(eTime))) );
             startTime.setText(String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(nowTime),
                     TimeUnit.MILLISECONDS.toSeconds(nowTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(nowTime))) );
             songProcess.setProgress(nowTime);
-            eTime = mPlayer.getDuration();
-            songTime.setText(String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(eTime),
-                    TimeUnit.MILLISECONDS.toSeconds(eTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(eTime))) );
+
             hdlr.postDelayed(this, 100);
         }
     };
