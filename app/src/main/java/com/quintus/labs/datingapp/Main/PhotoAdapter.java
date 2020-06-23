@@ -47,15 +47,18 @@ public class PhotoAdapter extends ArrayAdapter<Cards> {
         }
 
         TextView name = convertView.findViewById(R.id.name);
+        TextView auther = convertView.findViewById(R.id.auther);
         ImageView image = convertView.findViewById(R.id.image);
         ImageButton btnInfo = convertView.findViewById(R.id.checkInfoBeforeMatched);
 
-        name.setText(card_item.getName() + ", " + card_item.getAge());
+        name.setText(card_item.getName() );
+        auther.setText(card_item.getAuther());
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ProfileCheckinMain.class);
-                intent.putExtra("name", card_item.getName() + ", " + card_item.getAge());
+                intent.putExtra("name", card_item.getName() );
+                intent.putExtra("auther", card_item.getAuther() );
                 intent.putExtra("photo", card_item.getProfileImageUrl());
                 intent.putExtra("bio", card_item.getBio());
                 intent.putExtra("interest", card_item.getInterest());
@@ -64,8 +67,8 @@ public class PhotoAdapter extends ArrayAdapter<Cards> {
             }
         });
 
-        name.setText(card_item.getName() + ", " + card_item.getAge());
-
+        name.setText(card_item.getName() );
+        auther.setText(card_item.getAuther());
         switch (card_item.getProfileImageUrl()) {
             case "defaultFemale":
                 Glide.with(getContext()).load(R.drawable.default_woman).into(image);
