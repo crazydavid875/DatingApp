@@ -1,6 +1,10 @@
 package com.quintus.labs.datingapp.Main;
 
 
+import android.net.Uri;
+
+import com.quintus.labs.datingapp.R;
+
 /**
  * DatingApp
  * https://github.com/quintuslabs/DatingApp
@@ -13,7 +17,7 @@ public class Cards {
     private String name, profileImageUrl, bio, interest;
     private int age;
     private int distance;
-
+    private Uri music;
     public Cards(String userId, String name, int age, String profileImageUrl, String bio, String interest, int distance) {
         this.userId = userId;
         this.name = name;
@@ -22,12 +26,13 @@ public class Cards {
         this.bio = bio;
         this.interest = interest;
         this.distance = distance;
+        this.music = Uri.parse("android.resource://com.quintus.labs.datingapp/"+ R.raw.test1);;
     }
 
     public Cards(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
     }
-
+    public Uri getMusic(){return  music;}
     public int getDistance() {
         return distance;
     }

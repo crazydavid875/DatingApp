@@ -3,6 +3,10 @@ package com.quintus.labs.datingapp.Main;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.quintus.labs.datingapp.R;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -25,11 +31,12 @@ import java.util.List;
 
 public class PhotoAdapter extends ArrayAdapter<Cards> {
     Context mContext;
+    MainActivity main;
 
-
-    public PhotoAdapter(@NonNull Context context, int resource, @NonNull List<Cards> objects) {
+    public PhotoAdapter(@NonNull Context context, int resource, @NonNull List<Cards> objects,MainActivity main) {
         super(context, resource, objects);
         this.mContext = context;
+        this.main = main;
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -73,4 +80,5 @@ public class PhotoAdapter extends ArrayAdapter<Cards> {
 
         return convertView;
     }
+
 }
