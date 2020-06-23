@@ -1,5 +1,9 @@
 package com.quintus.labs.datingapp.Models;
 
+import android.content.Intent;
+
+import com.quintus.labs.datingapp.Listed.MusicList;
+
 public class Song {
 
     //public final long albumId;

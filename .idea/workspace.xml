@@ -47,8 +47,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_XL_API_29" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-13T12:11:08.129Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="74ca9c7f" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-23T02:29:03.732Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -133,14 +133,19 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="91" width="814" height="729" key="#Intentions" timestamp="1592879954864">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="91" width="814" height="729" key="#Intentions/0.0.1536.864@0.0.1536.864" timestamp="1592879954864" />
     <state x="672" y="184" key="#app" timestamp="1592848814563">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="672" y="184" key="#app/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592848814563" />
-    <state x="574" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1592036696289">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="718" y="178" key="#com.intellij.ide.util.MemberChooser" timestamp="1592854728863">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="574" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1592036696289" />
+    <state x="718" y="178" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592854728863" />
     <state x="461" y="357" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592031510279">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -153,31 +158,31 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="227" y="333" key="AndroidCreateResourceFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1592028424086" />
-    <state x="686" y="216" key="FileChooserDialogImpl" timestamp="1592838333672">
+    <state x="686" y="216" key="FileChooserDialogImpl" timestamp="1592875768263">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1592048460407" />
-    <state x="686" y="216" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592838333672" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom" timestamp="1592848810056">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="686" y="216" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592875768263" />
+    <state width="1493" height="215" key="GridCell.Tab.0.bottom" timestamp="1592882344915">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="739" height="125" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592050369168" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592848810056" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center" timestamp="1592848810056">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592882344915" />
+    <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592855237849" />
+    <state width="1493" height="215" key="GridCell.Tab.0.center" timestamp="1592882344915">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="739" height="125" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592050369167" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592848810056" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left" timestamp="1592848810056">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592882344915" />
+    <state width="1877" height="235" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592855237849" />
+    <state width="1493" height="215" key="GridCell.Tab.0.left" timestamp="1592882344915">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="739" height="125" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592050369167" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592848810056" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right" timestamp="1592848810056">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592882344915" />
+    <state width="1877" height="235" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592855237848" />
+    <state width="1493" height="215" key="GridCell.Tab.0.right" timestamp="1592882344915">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="739" height="125" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592050369167" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592848810056" />
+    <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592882344915" />
+    <state width="1877" height="235" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592855237849" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1592029733962">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -190,9 +195,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="575" y="90" width="770" height="900" key="find.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592842675525" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1592041217633">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="539" y="226" width="840" height="848" key="search.everywhere.popup" timestamp="1592853800573">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1592041217633" />
+    <state x="539" y="226" width="840" height="848" key="search.everywhere.popup/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1592853800573" />
   </component>
 </project>

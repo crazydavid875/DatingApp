@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -24,6 +25,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
+
+import com.quintus.labs.datingapp.Listed.MusicList;
 import com.quintus.labs.datingapp.Module.SongState;
 import com.quintus.labs.datingapp.R;
 
@@ -41,7 +44,7 @@ public class MusicPlayer extends AppCompatActivity {
     //private final Timer timer;
     //private lateinit var mService: MusicService
     //private lateinit var serviceConn: ServiceConnection
-    private ImageView previousbtn, nextbtn, pausebtn, playbtn;
+    private ImageView previousbtn, nextbtn, pausebtn, playbtn,playListbtn;
     private boolean pause_state=false;
     private MediaPlayer mPlayer = new MediaPlayer();
     private TextView songName, artist, startTime, songTime;
@@ -59,6 +62,7 @@ public class MusicPlayer extends AppCompatActivity {
         previousbtn=(ImageView) findViewById(R.id.previous_song);
         nextbtn=(ImageView) findViewById(R.id.next_song);
         playbtn=(ImageView) findViewById(R.id.player_center_icon);
+        playListbtn =(ImageView) findViewById(R.id.player_queue);
         Log.d("test","PlayInitFinish");
         previousbtn.setClickable(true);
         nextbtn.setClickable(true);
@@ -192,6 +196,17 @@ public class MusicPlayer extends AppCompatActivity {
                 if(!playbtn.isEnabled()){
                     playbtn.setEnabled(true);
                 }
+            }
+        });
+        playListbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playing=SongState.PAUSE;
+                mPlayer.pause();
+                pause_state=true;
+                playbtn.setImageDrawable(getDrawable(R.drawable.play));
+                Intent intent=new Intent(MusicPlayer.this, MusicList.class);
+                startActivity(intent);
             }
         });
     }

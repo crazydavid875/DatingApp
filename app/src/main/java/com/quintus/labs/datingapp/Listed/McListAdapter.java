@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Collections;
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.quintus.labs.datingapp.Login.Login;
 import com.quintus.labs.datingapp.Main.MainActivity;
 import com.quintus.labs.datingapp.Main.MusicPlayer;
 import com.quintus.labs.datingapp.Matched.ActiveUserAdapter;
@@ -30,20 +33,13 @@ public class McListAdapter extends RecyclerView.Adapter<McListAdapter.MyViewHold
     private List<Song> arraylist;
     private LayoutInflater  mInflater;
     private StartDrag mStartDragListener;
+    private Context mContext;
+    private OnItemClickListener mOnItemClickListener;
     public McListAdapter( final MusicList context, List<Song> arraylist, boolean isPlaylistSong, boolean animate) {
         this.arraylist = arraylist;
         mInflater = LayoutInflater.from(context);
 
         mStartDragListener = context;
-
-        /*
-        this.isPlaylist = isPlaylistSong;
-        this.songIDs = getSongIds();
-        this.ateKey = Helpers.getATEKey(context);
-        this.animate = animate;
-
-        */
-
     }
     @NonNull
     @Override
@@ -102,7 +98,12 @@ public class McListAdapter extends RecyclerView.Adapter<McListAdapter.MyViewHold
         myViewHolder.rowView.setBackgroundColor(Color.WHITE);
 
     }
-
+    public interface OnItemClickListener {
+        void onItemClick(View view, Song song, int position);
+    }
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mOnItemClickListener = mItemClickListener;
+    }
     @Override
     public int getItemCount() {
         return arraylist.size();
@@ -128,9 +129,13 @@ public class McListAdapter extends RecyclerView.Adapter<McListAdapter.MyViewHold
         @Override
         public void onClick(View v) {
             int mPosition = getLayoutPosition();
+            Context mContext =(Context) mStartDragListener;
             Song song=arraylist.get(mPosition);
             Bundle bundle = new Bundle();
             bundle.putInt("id", song.id);
+            Log.d("Touch id","id is : "+Integer.toString(song.id));
+            Intent intent = new Intent(mContext,MusicPlayer.class);
+            mContext.startActivity(intent);
             //NavigationUtils.navigateToPlaylistDetail(mContext, getPlaylistType(getAdapterPosition()), (long) albumArt.getTag(), String.valueOf(title.getText()), foregroundColor, arraylist.get(getAdapterPosition()).id, null);
 
         }
