@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -24,6 +26,7 @@ import com.quintus.labs.datingapp.R;
 import com.quintus.labs.datingapp.Utils.PulsatorLayout;
 import com.quintus.labs.datingapp.Utils.TopNavigationViewHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +49,13 @@ public class MainActivity extends Activity {
     private NotificationHelper mNotificationHelper;
     private Cards cards_data[];
     private PhotoAdapter arrayAdapter;
-
+    private MediaPlayer mPlayer ;
+    private Uri path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mPlayer = new MediaPlayer();
 
         cardFrame = findViewById(R.id.card_frame);
         moreFrame = findViewById(R.id.more_frame);
@@ -80,12 +84,39 @@ public class MainActivity extends Activity {
         cards = new Cards("7", "Sudeshna Roy", 19, "https://talenthouse-res.cloudinary.com/image/upload/c_fill,f_auto,h_640,w_640/v1411380245/user-415406/submissions/hhb27pgtlp9akxjqlr5w.jpg", "Papa's Pari", "Art", 5000);
         rowItems.add(cards);
 
-        arrayAdapter = new PhotoAdapter(this, R.layout.item, rowItems);
+        arrayAdapter = new PhotoAdapter(this, R.layout.item, rowItems,this);
 
         checkRowItem();
         updateSwipeCard();
     }
+    public void SetUri(Uri path){
+        this.path = path;
+    }
+    public void playMusic(Uri path) {
 
+        if(path!=null) {
+            mPlayer.reset();
+            try {
+                Toast.makeText(mContext, "played", Toast.LENGTH_LONG).show();
+                mPlayer.setDataSource(mContext, path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                mPlayer.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mPlayer.start();
+        }
+        else{
+
+        }
+    }
+    private void  StopMusic(){
+        mPlayer.stop();
+    }
     private void checkRowItem() {
         if (rowItems.isEmpty()) {
             moreFrame.setVisibility(View.VISIBLE);
@@ -132,6 +163,7 @@ public class MainActivity extends Activity {
     private void updateSwipeCard() {
         final SwipeFlingAdapterView flingContainer = findViewById(R.id.frame);
         flingContainer.setAdapter(arrayAdapter);
+        playMusic(rowItems.get(0).getMusic());
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
@@ -139,6 +171,10 @@ public class MainActivity extends Activity {
                 Log.d("LIST", "removed object!");
                 rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
+                StopMusic();
+                if(!rowItems.isEmpty()) {
+                    playMusic(rowItems.get(0).getMusic());
+                }
             }
 
             @Override
@@ -168,6 +204,7 @@ public class MainActivity extends Activity {
                 View view = flingContainer.getSelectedView();
                 view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
                 view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
+
             }
         });
 
@@ -176,6 +213,9 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                 Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
+
+
+
             }
         });
     }
@@ -189,7 +229,9 @@ public class MainActivity extends Activity {
 
 
     public void DislikeBtn(View v) {
+        StopMusic();
         if (rowItems.size() != 0) {
+
             Cards card_item = rowItems.get(0);
 
             String userId = card_item.getUserId();
@@ -204,7 +246,9 @@ public class MainActivity extends Activity {
     }
 
     public void LikeBtn(View v) {
+        StopMusic();
         if (rowItems.size() != 0) {
+
             Cards card_item = rowItems.get(0);
 
             String userId = card_item.getUserId();
