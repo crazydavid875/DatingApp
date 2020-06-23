@@ -28,11 +28,9 @@ public class Cards {
         this.auther = auther;
         this.interest = interest;
         this.distance = distance;
-<<<<<<< HEAD
+
         this.music = Uri.parse("android.resource://com.quintus.labs.datingapp/"+ id);
-=======
-        this.music = Uri.parse("android.resource://com.quintus.labs.datingapp/"+ R.raw.test);;
->>>>>>> 0188d77bc24196952762df7232cb0eff23e70a98
+
     }
 
     public Cards(String profileImageUrl) {
