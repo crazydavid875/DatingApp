@@ -56,6 +56,7 @@ public class ProfileCheckinMain extends AppCompatActivity {
         profileInterest.setText(interest);
 
         profileImageUrl = intent.getStringExtra("photo");
+
         switch (profileImageUrl) {
             case "defaultFemale":
                 Glide.with(mContext).load(R.drawable.default_woman).into(profileImage);
@@ -67,6 +68,8 @@ public class ProfileCheckinMain extends AppCompatActivity {
                 Glide.with(mContext).load(profileImageUrl).into(profileImage);
                 break;
         }
+
+
     }
 
 

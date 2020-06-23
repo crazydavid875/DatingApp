@@ -14,19 +14,23 @@ import com.quintus.labs.datingapp.R;
 
 public class Cards {
     private String userId;
-    private String name, profileImageUrl, bio, interest;
+    private String name, profileImageUrl, bio, interest,auther;
     private int age;
     private int distance;
     private Uri music;
-    public Cards(String userId, String name, int age, String profileImageUrl, String bio, String interest, int distance) {
+
+    public Cards(String userId, String name,String auther, String profileImageUrl, String bio, String interest, int distance,int id) {
         this.userId = userId;
         this.name = name;
-        this.age = age;
+        this.age = 0;
         this.profileImageUrl = profileImageUrl;
         this.bio = bio;
+        this.auther = auther;
         this.interest = interest;
         this.distance = distance;
-        this.music = Uri.parse("android.resource://com.quintus.labs.datingapp/"+ R.raw.test);;
+
+        this.music = Uri.parse("android.resource://com.quintus.labs.datingapp/"+ id);
+
     }
 
     public Cards(String profileImageUrl) {
@@ -36,7 +40,9 @@ public class Cards {
     public int getDistance() {
         return distance;
     }
-
+    public String getAuther() {
+        return auther;
+    }
     public String getBio() {
         return bio;
     }
